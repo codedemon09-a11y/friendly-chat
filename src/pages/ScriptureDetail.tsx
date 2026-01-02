@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Clock, Download, Share2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, Clock, Share2 } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { useApp } from '@/contexts/AppContext';
 import { allScriptures, scriptureCategories } from '@/data/scriptures';
@@ -7,6 +7,18 @@ import { useScriptureChapters } from '@/hooks/useScriptureData';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { toast } from '@/hooks/use-toast';
+
+// Import scripture images
+import bhagavadGitaCover from '@/assets/bhagavad-gita-cover.jpg';
+import ramayanCover from '@/assets/ramayan-cover.jpg';
+import shivPuranaCover from '@/assets/shiv-purana-cover.jpg';
+
+const scriptureImages: Record<string, string> = {
+  'bhagavad-gita': bhagavadGitaCover,
+  'ramayan': ramayanCover,
+  'shiv-purana': shivPuranaCover,
+};
 
 export default function ScriptureDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -36,6 +48,7 @@ export default function ScriptureDetail() {
 
   // Use unified chapters from hook, fallback to static data
   const chapters = scriptureChapters.length > 0 ? scriptureChapters : scripture.chapters;
+  const hasContent = chapters.length > 0 && chapters.some(ch => ch.verses && ch.verses.length > 0);
 
   const content = {
     en: {
@@ -46,9 +59,10 @@ export default function ScriptureDetail() {
       readChapter: 'Read Chapter',
       about: 'About This Scripture',
       topics: 'Key Topics',
-      downloadPdf: 'Download PDF',
       share: 'Share',
       category: 'Category',
+      comingSoon: 'Coming Soon',
+      comingSoonDesc: 'Content for this scripture is being prepared. Please check back later.',
     },
     hi: {
       backTo: 'ग्रंथों पर वापस',
@@ -58,14 +72,43 @@ export default function ScriptureDetail() {
       readChapter: 'अध्याय पढ़ें',
       about: 'इस ग्रंथ के बारे में',
       topics: 'मुख्य विषय',
-      downloadPdf: 'PDF डाउनलोड करें',
       share: 'साझा करें',
       category: 'श्रेणी',
+      comingSoon: 'जल्द आ रहा है',
+      comingSoonDesc: 'इस ग्रंथ की सामग्री तैयार की जा रही है। कृपया बाद में पुनः देखें।',
+    },
+    mr: {
+      backTo: 'ग्रंथांकडे परत',
+      chapters: 'अध्याय',
+      verses: 'श्लोक',
+      tableOfContents: 'विषय सूची',
+      readChapter: 'अध्याय वाचा',
+      about: 'या ग्रंथाबद्दल',
+      topics: 'मुख्य विषय',
+      share: 'शेअर करा',
+      category: 'श्रेणी',
+      comingSoon: 'लवकरच येत आहे',
+      comingSoonDesc: 'या ग्रंथाची सामग्री तयार केली जात आहे. कृपया नंतर पुन्हा पहा.',
     }
   };
 
-  const t = content[language as 'en' | 'hi'] || content.en;
+  const t = content[language as 'en' | 'hi' | 'mr'] || content.en;
   const category = scriptureCategories.find(c => c.id === scripture.category);
+  const coverImage = scriptureImages[scripture.slug];
+
+  const handleShare = () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({
+        title: scripture.title.en,
+        text: scripture.description.en,
+        url
+      });
+    } else {
+      navigator.clipboard.writeText(url);
+      toast({ title: language === 'hi' ? 'लिंक कॉपी हो गया!' : language === 'mr' ? 'लिंक कॉपी झाली!' : 'Link copied!' });
+    }
+  };
 
   return (
     <Layout>
@@ -78,17 +121,27 @@ export default function ScriptureDetail() {
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Scripture Icon/Cover */}
+            {/* Scripture Cover Image */}
             <div className="lg:col-span-1">
-              <div className="aspect-square max-w-sm mx-auto lg:mx-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center shadow-spiritual">
-                <span className="text-9xl animate-float">
-                  {scripture.category === 'gita' && '📖'}
-                  {scripture.category === 'ramayan' && '🏹'}
-                  {scripture.category === 'veda' && '📜'}
-                  {scripture.category === 'upanishad' && '🕉️'}
-                  {scripture.category === 'purana' && '📚'}
-                  {scripture.category === 'other' && '✨'}
-                </span>
+              <div className="aspect-square max-w-sm mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-spiritual">
+                {coverImage ? (
+                  <img 
+                    src={coverImage} 
+                    alt={scripture.title.en}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                    <span className="text-9xl animate-float">
+                      {scripture.category === 'gita' && '📖'}
+                      {scripture.category === 'ramayan' && '🏹'}
+                      {scripture.category === 'veda' && '📜'}
+                      {scripture.category === 'upanishad' && '🕉️'}
+                      {scripture.category === 'purana' && '📚'}
+                      {scripture.category === 'other' && '✨'}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -124,19 +177,20 @@ export default function ScriptureDetail() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                {chapters.length > 0 && (
+                {hasContent ? (
                   <Link to={`/scripture/${scripture.slug}/chapter/1`}>
                     <Button className="btn-spiritual">
                       <BookOpen className="w-4 h-4 mr-2" />
-                      {language === 'hi' ? 'पढ़ना शुरू करें' : 'Start Reading'}
+                      {language === 'hi' ? 'पढ़ना शुरू करें' : language === 'mr' ? 'वाचायला सुरुवात करा' : 'Start Reading'}
                     </Button>
                   </Link>
+                ) : (
+                  <Button className="btn-spiritual" disabled>
+                    <BookOpen className="w-4 h-4 mr-2" />
+                    {t.comingSoon}
+                  </Button>
                 )}
-                <Button variant="outline">
-                  <Download className="w-4 h-4 mr-2" />
-                  {t.downloadPdf}
-                </Button>
-                <Button variant="outline">
+                <Button variant="outline" onClick={handleShare}>
                   <Share2 className="w-4 h-4 mr-2" />
                   {t.share}
                 </Button>
@@ -160,12 +214,12 @@ export default function ScriptureDetail() {
         </div>
       </section>
 
-      {/* Chapters List */}
+      {/* Chapters List or Coming Soon */}
       <section className="py-12">
         <div className="container px-4">
           <h2 className="font-display text-2xl md:text-3xl font-bold mb-8">{t.tableOfContents}</h2>
           
-          {chapters.length > 0 ? (
+          {hasContent ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {chapters.map((chapter) => (
                 <Link key={chapter.id} to={`/scripture/${scripture.slug}/chapter/${chapter.number}`}>
@@ -197,14 +251,14 @@ export default function ScriptureDetail() {
             </div>
           ) : (
             <div className="card-spiritual p-12 text-center">
-              <p className="text-muted-foreground mb-4">
-                {language === 'hi' 
-                  ? 'इस ग्रंथ के अध्याय जल्द ही उपलब्ध होंगे।' 
-                  : 'Chapters for this scripture will be available soon.'}
+              <div className="text-6xl mb-4">📚</div>
+              <h3 className="font-display text-2xl font-bold mb-2">{t.comingSoon}</h3>
+              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                {t.comingSoonDesc}
               </p>
               <Link to="/scriptures">
                 <Button variant="outline">
-                  {language === 'hi' ? 'अन्य ग्रंथ देखें' : 'Explore Other Scriptures'}
+                  {language === 'hi' ? 'अन्य ग्रंथ देखें' : language === 'mr' ? 'इतर ग्रंथ पहा' : 'Explore Other Scriptures'}
                 </Button>
               </Link>
             </div>
