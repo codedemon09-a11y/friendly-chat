@@ -13,11 +13,15 @@ import { cn } from '@/lib/utils';
 import bhagavadGitaCover from '@/assets/bhagavad-gita-cover.jpg';
 import ramayanCover from '@/assets/ramayan-cover.jpg';
 import shivPuranaCover from '@/assets/shiv-purana-cover.jpg';
+import rigVedaCover from '@/assets/rig-veda-cover.jpg';
+import upanishadsCover from '@/assets/upanishads-cover.jpg';
 
 const scriptureImages: Record<string, string> = {
   'bhagavad-gita': bhagavadGitaCover,
   'ramayan': ramayanCover,
   'shiv-purana': shivPuranaCover,
+  'rig-veda': rigVedaCover,
+  'upanishads': upanishadsCover,
 };
 
 export default function Scriptures() {
@@ -152,7 +156,7 @@ export default function Scriptures() {
                           <img 
                             src={coverImage} 
                             alt={scripture.title.en}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">

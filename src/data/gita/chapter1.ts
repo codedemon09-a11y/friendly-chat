@@ -30,7 +30,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'The blind king Dhritarashtra asks his minister Sanjaya about the events on the battlefield. This opening verse sets the stage for the entire Gita.',
-        hi: 'अंधे राजा धृतराष्ट्र अपने मंत्री संजय से युद्धभूमि की घटनाओं के बारे में पूछते हैं। यह प्रारंभिक श्लोक संपूर्ण गीता की पृष्ठभूमि तैयार करता है।'
+        hi: 'अंधे राजा धृतराष्ट्र अपने मंत्री संजय से युद्धभूमि की घटनाओं के बारे में पूछते हैं। यह प्रारंभिक श्लोक संपूर्ण गीता की पृष्ठभूमि तैयार करता है।',
+        mr: 'अंध राजा धृतराष्ट्र आपले मंत्री संजय यांना रणभूमीवरील घटनांबद्दल विचारतात. हा प्रारंभिक श्लोक संपूर्ण गीतेची पार्श्वभूमी तयार करतो.'
       },
       keywords: ['Dhritarashtra', 'Sanjaya', 'Kurukshetra', 'Dharma']
     },
@@ -49,7 +50,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Sanjaya begins narrating the events. Duryodhana, seeing the organized Pandava army, goes to Dronacharya seeking reassurance.',
-        hi: 'संजय घटनाओं का वर्णन करना शुरू करते हैं। दुर्योधन संगठित पांडव सेना को देखकर आश्वासन के लिए द्रोणाचार्य के पास जाता है।'
+        hi: 'संजय घटनाओं का वर्णन करना शुरू करते हैं। दुर्योधन संगठित पांडव सेना को देखकर आश्वासन के लिए द्रोणाचार्य के पास जाता है।',
+        mr: 'संजय घटनांचे वर्णन सुरू करतात. दुर्योधन संघटित पांडव सेना पाहून आश्वासनासाठी द्रोणाचार्यांकडे जातो.'
       },
       keywords: ['Sanjaya', 'Duryodhana', 'Drona', 'Army']
     },
@@ -68,7 +70,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana points out the Pandava army to Drona, noting it was arranged by Dhrishtadyumna, who was Drona\'s own student.',
-        hi: 'दुर्योधन द्रोण को पांडव सेना दिखाते हुए बताता है कि इसे धृष्टद्युम्न ने व्यवस्थित किया है, जो स्वयं द्रोण का शिष्य था।'
+        hi: 'दुर्योधन द्रोण को पांडव सेना दिखाते हुए बताता है कि इसे धृष्टद्युम्न ने व्यवस्थित किया है, जो स्वयं द्रोण का शिष्य था।',
+        mr: 'दुर्योधन द्रोणांना पांडव सेना दाखवतो आणि सांगतो की ती धृष्टद्युम्नाने व्यवस्थित केली आहे, जो स्वतः द्रोणांचा शिष्य होता.'
       },
       keywords: ['Drupada', 'Dhrishtadyumna', 'Army', 'Strategy']
     },
@@ -87,7 +90,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana lists the great warriors on the Pandava side, comparing them to Bhima and Arjuna in prowess.',
-        hi: 'दुर्योधन पांडव पक्ष के महान योद्धाओं की सूची देता है, उनकी तुलना भीम और अर्जुन से करता है।'
+        hi: 'दुर्योधन पांडव पक्ष के महान योद्धाओं की सूची देता है, उनकी तुलना भीम और अर्जुन से करता है।',
+        mr: 'दुर्योधन पांडव पक्षाच्या महान योद्ध्यांची यादी देतो, त्यांची तुलना भीम आणि अर्जुनाशी करतो.'
       },
       keywords: ['Yuyudhana', 'Virata', 'Drupada', 'Warriors']
     },
@@ -106,7 +110,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana continues naming the warriors on the Pandava side.',
-        hi: 'दुर्योधन पांडव पक्ष के योद्धाओं के नाम गिनाता रहता है।'
+        hi: 'दुर्योधन पांडव पक्ष के योद्धाओं के नाम गिनाता रहता है।',
+        mr: 'दुर्योधन पांडव पक्षाच्या योद्ध्यांची नावे सांगत राहतो.'
       },
       keywords: ['Dhrishtaketu', 'Chekitana', 'Kashi', 'Warriors']
     },
@@ -125,7 +130,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana names more warriors including Abhimanyu (son of Subhadra) and the five sons of Draupadi.',
-        hi: 'दुर्योधन और योद्धाओं के नाम लेता है जिनमें अभिमन्यु (सुभद्रा-पुत्र) और द्रौपदी के पांच पुत्र शामिल हैं।'
+        hi: 'दुर्योधन और योद्धाओं के नाम लेता है जिनमें अभिमन्यु (सुभद्रा-पुत्र) और द्रौपदी के पांच पुत्र शामिल हैं।',
+        mr: 'दुर्योधन आणखी योद्ध्यांची नावे घेतो ज्यात अभिमन्यू (सुभद्रापुत्र) आणि द्रौपदीचे पाच पुत्र आहेत.'
       },
       keywords: ['Yudhamanyu', 'Uttamaujas', 'Abhimanyu', 'Draupadi']
     },
@@ -144,7 +150,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana now turns to list the commanders on his own side, addressing Drona respectfully.',
-        hi: 'दुर्योधन अब अपने पक्ष के सेनापतियों की सूची देने लगता है, द्रोण को सम्मानपूर्वक संबोधित करते हुए।'
+        hi: 'दुर्योधन अब अपने पक्ष के सेनापतियों की सूची देने लगता है, द्रोण को सम्मानपूर्वक संबोधित करते हुए।',
+        mr: 'दुर्योधन आता आपल्या पक्षाच्या सेनापतींची यादी देऊ लागतो, द्रोणांना आदरपूर्वक संबोधित करत.'
       },
       keywords: ['Leaders', 'Army', 'Commanders']
     },
@@ -163,7 +170,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana names the great warriors on his side including Bhishma, Karna, and Drona himself.',
-        hi: 'दुर्योधन अपने पक्ष के महान योद्धाओं के नाम लेता है जिसमें भीष्म, कर्ण और स्वयं द्रोण शामिल हैं।'
+        hi: 'दुर्योधन अपनी तरफ के महान योद्धाओं के नाम लेता है जिनमें भीष्म, कर्ण और स्वयं द्रोण शामिल हैं।',
+        mr: 'दुर्योधन आपल्या बाजूच्या महान योद्ध्यांची नावे घेतो ज्यात भीष्म, कर्ण आणि स्वतः द्रोण आहेत.'
       },
       keywords: ['Bhishma', 'Karna', 'Kripa', 'Ashwatthama']
     },
@@ -182,7 +190,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana mentions that many brave warriors are ready to die for him, all expert in warfare.',
-        hi: 'दुर्योधन बताता है कि बहुत से वीर योद्धा उसके लिए मरने को तैयार हैं, सभी युद्ध में कुशल।'
+        hi: 'दुर्योधन बताता है कि बहुत से वीर योद्धा उसके लिए मरने को तैयार हैं, सभी युद्ध में कुशल।',
+        mr: 'दुर्योधन सांगतो की अनेक शूर योद्धे त्याच्यासाठी मरण्यास तयार आहेत, सर्व युद्धात कुशल.'
       },
       keywords: ['Warriors', 'Weapons', 'Sacrifice', 'Skill']
     },
@@ -201,7 +210,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana compares the strength of both armies, suggesting confidence in his own side\'s superior numbers.',
-        hi: 'दुर्योधन दोनों सेनाओं की शक्ति की तुलना करता है, अपने पक्ष की श्रेष्ठ संख्या पर विश्वास व्यक्त करता है।'
+        hi: 'दुर्योधन दोनों सेनाओं की शक्ति की तुलना करता है, अपने पक्ष की श्रेष्ठ संख्या पर विश्वास व्यक्त करता है।',
+        mr: 'दुर्योधन दोन्ही सेनांच्या शक्तीची तुलना करतो, आपल्या बाजूच्या श्रेष्ठ संख्येवर विश्वास व्यक्त करतो.'
       },
       keywords: ['Bhishma', 'Bhima', 'Army', 'Strength']
     },
@@ -220,7 +230,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Duryodhana instructs all warriors to protect Bhishma, recognizing him as the key to their victory.',
-        hi: 'दुर्योधन सभी योद्धाओं को भीष्म की रक्षा करने का निर्देश देता है, उन्हें विजय की कुंजी मानते हुए।'
+        hi: 'दुर्योधन सभी योद्धाओं को भीष्म की रक्षा करने का निर्देश देता है, उन्हें विजय की कुंजी मानते हुए।',
+        mr: 'दुर्योधन सर्व योद्ध्यांना भीष्मांचे रक्षण करण्याचा आदेश देतो, त्यांना विजयाची गुरुकिल्ली मानतो.'
       },
       keywords: ['Bhishma', 'Protection', 'Strategy', 'Command']
     },
@@ -239,7 +250,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Bhishma blows his conch to boost Duryodhana\'s morale and signal the start of battle.',
-        hi: 'भीष्म दुर्योधन का मनोबल बढ़ाने और युद्ध की शुरुआत का संकेत देने के लिए शंख बजाते हैं।'
+        hi: 'भीष्म दुर्योधन का मनोबल बढ़ाने और युद्ध की शुरुआत का संकेत देने के लिए शंख बजाते हैं।',
+        mr: 'भीष्म दुर्योधनाचे मनोबल वाढवण्यासाठी आणि युद्धाच्या प्रारंभाचे संकेत देण्यासाठी शंख वाजवतात.'
       },
       keywords: ['Bhishma', 'Conch', 'Lion', 'Signal']
     },
@@ -258,7 +270,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'All the musical instruments of war sound together, creating a thunderous noise on the Kaurava side.',
-        hi: 'युद्ध के सभी वाद्य यंत्र एक साथ बजते हैं, कौरव पक्ष में गर्जना करते हुए।'
+        hi: 'युद्ध के सभी वाद्य यंत्र एक साथ बजते हैं, कौरव पक्ष में गर्जना करते हुए।',
+        mr: 'युद्धाची सर्व वाद्ये एकत्र वाजतात, कौरव पक्षात गर्जना करत.'
       },
       keywords: ['Conch', 'Drums', 'Sound', 'War']
     },
@@ -277,7 +290,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Krishna and Arjuna respond by blowing their divine conches from their grand white-horsed chariot.',
-        hi: 'कृष्ण और अर्जुन अपने भव्य श्वेत अश्वों वाले रथ से अपने दिव्य शंख बजाकर प्रत्युत्तर देते हैं।'
+        hi: 'कृष्ण और अर्जुन अपने भव्य श्वेत अश्वों वाले रथ से अपने दिव्य शंख बजाकर प्रत्युत्तर देते हैं।',
+        mr: 'कृष्ण आणि अर्जुन आपल्या भव्य श्वेत अश्वांच्या रथातून आपले दिव्य शंख वाजवून प्रत्युत्तर देतात.'
       },
       keywords: ['Krishna', 'Arjuna', 'Chariot', 'Conch']
     },
@@ -296,7 +310,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'The names of the divine conches of Krishna, Arjuna, and Bhima are mentioned.',
-        hi: 'कृष्ण, अर्जुन और भीम के दिव्य शंखों के नाम बताए गए हैं।'
+        hi: 'कृष्ण, अर्जुन और भीम के दिव्य शंखों के नाम बताए गए हैं।',
+        mr: 'कृष्ण, अर्जुन आणि भीम यांच्या दिव्य शंखांची नावे सांगितली आहेत.'
       },
       keywords: ['Panchajanya', 'Devadatta', 'Paundra', 'Conches']
     },
@@ -315,7 +330,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'The conches of Yudhishthira, Nakula, and Sahadeva are named.',
-        hi: 'युधिष्ठिर, नकुल और सहदेव के शंखों के नाम बताए गए हैं।'
+        hi: 'युधिष्ठिर, नकुल और सहदेव के शंखों के नाम बताए गए हैं।',
+        mr: 'युधिष्ठिर, नकुल आणि सहदेव यांच्या शंखांची नावे सांगितली आहेत.'
       },
       keywords: ['Yudhishthira', 'Nakula', 'Sahadeva', 'Conches']
     },
@@ -334,7 +350,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'More warriors on the Pandava side who blew their conches are named.',
-        hi: 'पांडव पक्ष के और योद्धाओं के नाम जिन्होंने शंख बजाए।'
+        hi: 'पांडव पक्ष के और योद्धाओं के नाम जिन्होंने शंख बजाए।',
+        mr: 'पांडव पक्षातील आणखी योद्ध्यांची नावे ज्यांनी शंख वाजवले.'
       },
       keywords: ['Kashi', 'Shikhandi', 'Dhrishtadyumna', 'Satyaki']
     },
@@ -353,7 +370,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Drupada, the five sons of Draupadi, and Abhimanyu also blow their conches.',
-        hi: 'द्रुपद, द्रौपदी के पांच पुत्र और अभिमन्यु भी अपने शंख बजाते हैं।'
+        hi: 'द्रुपद, द्रौपदी के पांच पुत्र और अभिमन्यु भी अपने शंख बजाते हैं।',
+        mr: 'द्रुपद, द्रौपदीचे पाच पुत्र आणि अभिमन्यू देखील आपले शंख वाजवतात.'
       },
       keywords: ['Drupada', 'Draupadi', 'Abhimanyu', 'Conches']
     },
@@ -372,7 +390,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'The thunderous sound of the Pandava conches shakes the hearts of the Kauravas.',
-        hi: 'पांडव शंखों की गर्जना कौरवों के हृदय को कंपा देती है।'
+        hi: 'पांडव शंखों की गर्जना कौरवों के हृदय को कंपा देती है।',
+        mr: 'पांडव शंखांची गर्जना कौरवांची हृदये कंपवते.'
       },
       keywords: ['Sound', 'Fear', 'Hearts', 'Kauravas']
     },
@@ -391,7 +410,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'As the battle is about to begin, Arjuna lifts his bow and prepares to speak to Krishna.',
-        hi: 'जैसे ही युद्ध शुरू होने वाला है, अर्जुन अपना धनुष उठाता है और कृष्ण से बात करने को तैयार होता है।'
+        hi: 'जैसे ही युद्ध शुरू होने वाला है, अर्जुन अपना धनुष उठाता है और कृष्ण से बात करने को तैयार होता है।',
+        mr: 'जसे युद्ध सुरू होणार आहे, अर्जुन आपले धनुष्य उचलतो आणि कृष्णाशी बोलण्यास तयार होतो.'
       },
       keywords: ['Arjuna', 'Hanuman', 'Bow', 'Krishna']
     },
@@ -410,7 +430,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Arjuna asks Krishna to position his chariot between the two armies so he can survey the battlefield.',
-        hi: 'अर्जुन कृष्ण से अपना रथ दोनों सेनाओं के बीच स्थापित करने के लिए कहता है ताकि वह युद्धभूमि का निरीक्षण कर सके।'
+        hi: 'अर्जुन कृष्ण से अपना रथ दोनों सेनाओं के बीच स्थापित करने के लिए कहता है ताकि वह युद्धभूमि का निरीक्षण कर सके।',
+        mr: 'अर्जुन कृष्णाला आपला रथ दोन्ही सेनांच्या मध्ये उभा करण्यास सांगतो जेणेकरून तो रणभूमीचे निरीक्षण करू शकेल.'
       },
       keywords: ['Arjuna', 'Chariot', 'Armies', 'Achyuta']
     },
@@ -429,7 +450,8 @@ export const chapter1: Chapter = {
       },
       meaning: {
         en: 'Arjuna wants to see who has assembled to fight against him in this battle.',
-        hi: 'अर्जुन देखना चाहता है कि इस युद्ध में उसके विरुद्ध लड़ने के लिए कौन एकत्र हुआ है।'
+        hi: 'अर्जुन देखना चाहता है कि इस युद्ध में उसके विरुद्ध लड़ने के लिए कौन एकत्र हुआ है।',
+        mr: 'अर्जुनाला पहायचे आहे की या युद्धात त्याच्याविरुद्ध लढण्यासाठी कोण जमले आहे.'
       },
       keywords: ['Warriors', 'Battle', 'Observation']
     },
