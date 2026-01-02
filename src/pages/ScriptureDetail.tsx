@@ -13,11 +13,15 @@ import { toast } from '@/hooks/use-toast';
 import bhagavadGitaCover from '@/assets/bhagavad-gita-cover.jpg';
 import ramayanCover from '@/assets/ramayan-cover.jpg';
 import shivPuranaCover from '@/assets/shiv-purana-cover.jpg';
+import rigVedaCover from '@/assets/rig-veda-cover.jpg';
+import upanishadsCover from '@/assets/upanishads-cover.jpg';
 
 const scriptureImages: Record<string, string> = {
   'bhagavad-gita': bhagavadGitaCover,
   'ramayan': ramayanCover,
   'shiv-purana': shivPuranaCover,
+  'rig-veda': rigVedaCover,
+  'upanishads': upanishadsCover,
 };
 
 export default function ScriptureDetail() {
@@ -128,7 +132,7 @@ export default function ScriptureDetail() {
                   <img 
                     src={coverImage} 
                     alt={scripture.title.en}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
