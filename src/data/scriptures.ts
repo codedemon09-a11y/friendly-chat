@@ -14,7 +14,6 @@ export interface Verse {
   meaning: {
     en: string;
     hi: string;
-    mr?: string;
   };
   keywords: string[];
   audioUrl?: string;

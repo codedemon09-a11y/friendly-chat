@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-type Language = 'en' | 'hi' | 'mr';
+type Language = 'en' | 'hi' | 'bn' | 'ta' | 'mr';
 type Theme = 'light' | 'dark';
 
 interface Bookmark {

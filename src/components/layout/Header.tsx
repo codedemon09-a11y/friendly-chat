@@ -14,6 +14,8 @@ import { cn } from '@/lib/utils';
 const languages = [
   { code: 'en', name: 'English', nativeName: 'English' },
   { code: 'hi', name: 'Hindi', nativeName: 'हिंदी' },
+  { code: 'bn', name: 'Bengali', nativeName: 'বাংলা' },
+  { code: 'ta', name: 'Tamil', nativeName: 'தமிழ்' },
   { code: 'mr', name: 'Marathi', nativeName: 'मराठी' },
 ];
 
@@ -79,14 +81,11 @@ export function Header() {
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-muted-foreground hover:text-primary gap-2 px-3">
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
                   <Globe className="w-5 h-5" />
-                  <span className="hidden sm:inline text-sm font-medium">
-                    {language === 'en' ? 'Language' : language === 'hi' ? 'भाषा' : 'भाषा'}
-                  </span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-card border-border z-50">
+              <DropdownMenuContent align="end" className="bg-card border-border">
                 {languages.map(lang => (
                   <DropdownMenuItem
                     key={lang.code}

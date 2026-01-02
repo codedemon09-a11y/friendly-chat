@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Grid, List, BookOpen } from 'lucide-react';
+import { Filter, Grid, List, BookOpen } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { useApp } from '@/contexts/AppContext';
 import { allScriptures, scriptureCategories } from '@/data/scriptures';
@@ -8,21 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-
-// Import scripture images
-import bhagavadGitaCover from '@/assets/bhagavad-gita-cover.jpg';
-import ramayanCover from '@/assets/ramayan-cover.jpg';
-import shivPuranaCover from '@/assets/shiv-purana-cover.jpg';
-import rigVedaCover from '@/assets/rig-veda-cover.jpg';
-import upanishadsCover from '@/assets/upanishads-cover.jpg';
-
-const scriptureImages: Record<string, string> = {
-  'bhagavad-gita': bhagavadGitaCover,
-  'ramayan': ramayanCover,
-  'shiv-purana': shivPuranaCover,
-  'rig-veda': rigVedaCover,
-  'upanishads': upanishadsCover,
-};
 
 export default function Scriptures() {
   const { language } = useApp();
@@ -54,19 +39,10 @@ export default function Scriptures() {
       verses: 'श्लोक',
       readNow: 'अभी पढ़ें',
       noResults: 'इस श्रेणी में कोई ग्रंथ नहीं मिला',
-    },
-    mr: {
-      title: 'पवित्र ग्रंथ',
-      subtitle: 'हिंदू धार्मिक ग्रंथांचा संपूर्ण संग्रह शोधा',
-      allCategories: 'सर्व',
-      chapters: 'अध्याय',
-      verses: 'श्लोक',
-      readNow: 'आता वाचा',
-      noResults: 'या श्रेणीमध्ये कोणतेही ग्रंथ सापडले नाहीत',
     }
   };
 
-  const t = content[language as 'en' | 'hi' | 'mr'] || content.en;
+  const t = content[language as 'en' | 'hi'] || content.en;
 
   const handleCategoryChange = (category: string | null) => {
     if (category) {
@@ -146,120 +122,94 @@ export default function Scriptures() {
             </div>
           ) : viewMode === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredScriptures.map((scripture) => {
-                const coverImage = scriptureImages[scripture.slug];
-                return (
-                  <Link key={scripture.id} to={`/scripture/${scripture.slug}`}>
-                    <Card className="card-spiritual card-hover h-full overflow-hidden group">
-                      <div className="h-48 relative overflow-hidden">
-                        {coverImage ? (
-                          <img 
-                            src={coverImage} 
-                            alt={scripture.title.en}
-                            className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                            <span className="text-7xl group-hover:scale-110 transition-transform duration-500">
-                              {scripture.category === 'gita' && '📖'}
-                              {scripture.category === 'ramayan' && '🏹'}
-                              {scripture.category === 'veda' && '📜'}
-                              {scripture.category === 'upanishad' && '🕉️'}
-                              {scripture.category === 'purana' && '📚'}
-                              {scripture.category === 'other' && '✨'}
-                            </span>
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+              {filteredScriptures.map((scripture) => (
+                <Link key={scripture.id} to={`/scripture/${scripture.slug}`}>
+                  <Card className="card-spiritual card-hover h-full overflow-hidden group">
+                    <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center relative overflow-hidden">
+                      <span className="text-7xl group-hover:scale-110 transition-transform duration-500">
+                        {scripture.category === 'gita' && '📖'}
+                        {scripture.category === 'ramayan' && '🏹'}
+                        {scripture.category === 'veda' && '📜'}
+                        {scripture.category === 'upanishad' && '🕉️'}
+                        {scripture.category === 'purana' && '📚'}
+                        {scripture.category === 'other' && '✨'}
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
+                          {scripture.title[language as 'en' | 'hi'] || scripture.title.en}
+                        </h3>
+                        <Badge variant="secondary" className="text-xs">
+                          {scriptureCategories.find(c => c.id === scripture.category)?.name[language as 'en' | 'hi']}
+                        </Badge>
                       </div>
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between gap-2 mb-2">
-                          <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
+                      <p className="font-sanskrit text-sm text-muted-foreground mb-3">
+                        {scripture.title.sanskrit}
+                      </p>
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                        {scripture.description[language as 'en' | 'hi'] || scripture.description.en}
+                      </p>
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                        <span>{scripture.chapterCount} {t.chapters}</span>
+                        <span>•</span>
+                        <span>{scripture.verseCount}+ {t.verses}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {scripture.topics.slice(0, 3).map(topic => (
+                          <Badge key={topic} variant="outline" className="text-xs">
+                            {topic}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {filteredScriptures.map((scripture) => (
+                <Link key={scripture.id} to={`/scripture/${scripture.slug}`}>
+                  <Card className="card-spiritual card-hover overflow-hidden">
+                    <CardContent className="p-6 flex items-center gap-6">
+                      <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span className="text-4xl">
+                          {scripture.category === 'gita' && '📖'}
+                          {scripture.category === 'ramayan' && '🏹'}
+                          {scripture.category === 'veda' && '📜'}
+                          {scripture.category === 'upanishad' && '🕉️'}
+                          {scripture.category === 'purana' && '📚'}
+                          {scripture.category === 'other' && '✨'}
+                        </span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2 mb-1">
+                          <h3 className="font-display text-xl font-semibold">
                             {scripture.title[language as 'en' | 'hi'] || scripture.title.en}
                           </h3>
-                          <Badge variant="secondary" className="text-xs">
-                            {scriptureCategories.find(c => c.id === scripture.category)?.name[language as 'en' | 'hi']}
+                          <Badge variant="secondary" className="text-xs flex-shrink-0">
+                            {scriptureCategories.find(c => c.id === scripture.category)?.name.en}
                           </Badge>
                         </div>
-                        <p className="font-sanskrit text-sm text-muted-foreground mb-3">
-                          {scripture.title.sanskrit}
-                        </p>
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                        <p className="text-sm text-muted-foreground line-clamp-1 mb-2">
                           {scripture.description[language as 'en' | 'hi'] || scripture.description.en}
                         </p>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
                           <span>{scripture.chapterCount} {t.chapters}</span>
                           <span>•</span>
                           <span>{scripture.verseCount}+ {t.verses}</span>
                         </div>
-                        <div className="flex flex-wrap gap-1">
-                          {scripture.topics.slice(0, 3).map(topic => (
-                            <Badge key={topic} variant="outline" className="text-xs">
-                              {topic}
-                            </Badge>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {filteredScriptures.map((scripture) => {
-                const coverImage = scriptureImages[scripture.slug];
-                return (
-                  <Link key={scripture.id} to={`/scripture/${scripture.slug}`}>
-                    <Card className="card-spiritual card-hover overflow-hidden">
-                      <CardContent className="p-6 flex items-center gap-6">
-                        <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-                          {coverImage ? (
-                            <img 
-                              src={coverImage} 
-                              alt={scripture.title.en}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                              <span className="text-4xl">
-                                {scripture.category === 'gita' && '📖'}
-                                {scripture.category === 'ramayan' && '🏹'}
-                                {scripture.category === 'veda' && '📜'}
-                                {scripture.category === 'upanishad' && '🕉️'}
-                                {scripture.category === 'purana' && '📚'}
-                                {scripture.category === 'other' && '✨'}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-2 mb-1">
-                            <h3 className="font-display text-xl font-semibold">
-                              {scripture.title[language as 'en' | 'hi'] || scripture.title.en}
-                            </h3>
-                            <Badge variant="secondary" className="text-xs flex-shrink-0">
-                              {scriptureCategories.find(c => c.id === scripture.category)?.name.en}
-                            </Badge>
-                          </div>
-                          <p className="text-sm text-muted-foreground line-clamp-1 mb-2">
-                            {scripture.description[language as 'en' | 'hi'] || scripture.description.en}
-                          </p>
-                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                            <span>{scripture.chapterCount} {t.chapters}</span>
-                            <span>•</span>
-                            <span>{scripture.verseCount}+ {t.verses}</span>
-                          </div>
-                        </div>
-                        <Button variant="ghost" className="flex-shrink-0">
-                          <BookOpen className="w-4 h-4 mr-2" />
-                          {t.readNow}
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                );
-              })}
+                      </div>
+                      <Button variant="ghost" className="flex-shrink-0">
+                        <BookOpen className="w-4 h-4 mr-2" />
+                        {t.readNow}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
           )}
         </div>

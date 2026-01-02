@@ -7,6 +7,8 @@ import {
   Heart, 
   Share2, 
   Copy, 
+  Download,
+  Volume2,
   Check,
   Minus,
   Plus,
@@ -28,6 +30,7 @@ export default function ChapterReader() {
   const { language, isBookmarked, addBookmark, removeBookmark, fontSize, setFontSize } = useApp();
   const navigate = useNavigate();
   const [selectedVerse, setSelectedVerse] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [copiedVerse, setCopiedVerse] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -80,10 +83,10 @@ export default function ChapterReader() {
   const nextChapter = allChapters.find(c => c.number === chapterNumber + 1);
 
   const handleCopyVerse = (verse: any) => {
-    const text = `${verse.sanskrit}\n\n${verse.transliteration}\n\n${verse.translations?.[language as 'en' | 'hi' | 'mr'] || verse.translations?.en || ''}\n\n— ${scripture.title.en}, Chapter ${verse.chapter}, Verse ${verse.verse}`;
+    const text = `${verse.sanskrit}\n\n${verse.transliteration}\n\n${verse.translations?.[language as 'en' | 'hi'] || verse.translations?.en || ''}\n\n— ${scripture.title.en}, Chapter ${verse.chapter}, Verse ${verse.verse}`;
     navigator.clipboard.writeText(text);
     setCopiedVerse(verse.id);
-    toast({ title: language === 'hi' ? 'श्लोक कॉपी हो गया!' : language === 'mr' ? 'श्लोक कॉपी झाला!' : 'Verse copied!' });
+    toast({ title: language === 'hi' ? 'श्लोक कॉपी हो गया!' : 'Verse copied!' });
     setTimeout(() => setCopiedVerse(null), 2000);
   };
 
@@ -97,21 +100,21 @@ export default function ChapterReader() {
       });
     } else {
       navigator.clipboard.writeText(url);
-      toast({ title: language === 'hi' ? 'लिंक कॉपी हो गया!' : language === 'mr' ? 'लिंक कॉपी झाली!' : 'Link copied!' });
+      toast({ title: language === 'hi' ? 'लिंक कॉपी हो गया!' : 'Link copied!' });
     }
   };
 
   const handleBookmark = (verse: any) => {
     if (isBookmarked(verse.id)) {
       removeBookmark(verse.id);
-      toast({ title: language === 'hi' ? 'बुकमार्क हटा दिया गया' : language === 'mr' ? 'बुकमार्क काढला' : 'Bookmark removed' });
+      toast({ title: language === 'hi' ? 'बुकमार्क हटा दिया गया' : 'Bookmark removed' });
     } else {
       addBookmark({
         verseId: verse.id,
         scriptureId: scripture.id,
         chapterId: chapter.id
       });
-      toast({ title: language === 'hi' ? 'बुकमार्क जोड़ दिया गया' : language === 'mr' ? 'बुकमार्क जोडला' : 'Bookmark added' });
+      toast({ title: language === 'hi' ? 'बुकमार्क जोड़ दिया गया' : 'Bookmark added' });
     }
   };
 
@@ -139,22 +142,10 @@ export default function ChapterReader() {
       backToScripture: 'वापस',
       loading: 'श्लोक लोड हो रहे हैं...',
       error: 'श्लोक लोड करने में विफल। कृपया पुनः प्रयास करें।',
-    },
-    mr: {
-      chapter: 'अध्याय',
-      verse: 'श्लोक',
-      meaning: 'अर्थ',
-      translation: 'अनुवाद',
-      previous: 'मागील',
-      next: 'पुढील',
-      verses: 'श्लोक',
-      backToScripture: 'परत',
-      loading: 'श्लोक लोड होत आहेत...',
-      error: 'श्लोक लोड करण्यात अयशस्वी. कृपया पुन्हा प्रयत्न करा.',
     }
   };
 
-  const t = content[language as 'en' | 'hi' | 'mr'] || content.en;
+  const t = content[language as 'en' | 'hi'] || content.en;
 
   return (
     <Layout>
@@ -198,6 +189,16 @@ export default function ChapterReader() {
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
+
+              <Button variant="ghost" size="sm">
+                <Volume2 className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">Audio</span>
+              </Button>
+              
+              <Button variant="ghost" size="sm">
+                <Download className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">PDF</span>
+              </Button>
             </div>
           </div>
         </div>
@@ -264,7 +265,7 @@ export default function ChapterReader() {
               <div className="text-center py-20">
                 <p className="text-destructive mb-4">{t.error}</p>
                 <Button onClick={() => window.location.reload()}>
-                  {language === 'hi' ? 'पुनः प्रयास करें' : language === 'mr' ? 'पुन्हा प्रयत्न करा' : 'Try Again'}
+                  {language === 'hi' ? 'पुनः प्रयास करें' : 'Try Again'}
                 </Button>
               </div>
             )}
@@ -339,12 +340,12 @@ export default function ChapterReader() {
                         className="text-foreground leading-relaxed"
                         style={{ fontSize: `${fontSize}px` }}
                       >
-                        {verse.translations?.[language as 'en' | 'hi' | 'mr'] || verse.translations?.en || ''}
+                        {verse.translations?.[language as 'en' | 'hi'] || verse.translations?.en || ''}
                       </p>
                     </div>
 
                     {/* Meaning - only show if available */}
-                    {(verse.meaning?.[language as 'en' | 'hi' | 'mr'] || verse.meaning?.en) && (
+                    {(verse.meaning?.[language as 'en' | 'hi'] || verse.meaning?.en) && (
                       <div className="bg-muted/30 rounded-lg p-4">
                         <h4 className="font-display font-semibold text-sm text-muted-foreground uppercase tracking-wider mb-3">
                           {t.meaning}
@@ -353,7 +354,7 @@ export default function ChapterReader() {
                           className="text-muted-foreground"
                           style={{ fontSize: `${fontSize - 1}px` }}
                         >
-                          {verse.meaning?.[language as 'en' | 'hi' | 'mr'] || verse.meaning?.en}
+                          {verse.meaning?.[language as 'en' | 'hi'] || verse.meaning?.en}
                         </p>
                       </div>
                     )}
